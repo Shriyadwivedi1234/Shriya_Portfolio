@@ -1,30 +1,57 @@
 import { Download, Mail, Github, Linkedin, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { downloadCV, socialLinks, config } from '../utils/api';
 
 export function Hero() {
   const [displayText, setDisplayText] = useState('');
+  const [isNameVisible, setIsNameVisible] = useState(false);
   const fullName = 'SHRIYA PARMANAND DWIVEDI';
   const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullName.length) {
-        setDisplayText(fullName.slice(0, index));
-        index++;
-      } else {
-        setIsTypingComplete(true);
-        clearInterval(timer);
-      }
-    }, 100);
+    // Start name animation after a brief delay
+    const nameTimer = setTimeout(() => {
+      setIsNameVisible(true);
+    }, 300);
 
-    return () => clearInterval(timer);
+    // Start typing animation after name appears
+    const typingTimer = setTimeout(() => {
+      let index = 0;
+      const timer = setInterval(() => {
+        if (index <= fullName.length) {
+          setDisplayText(fullName.slice(0, index));
+          index++;
+        } else {
+          setIsTypingComplete(true);
+          clearInterval(timer);
+        }
+      }, 100);
+
+      return () => clearInterval(timer);
+    }, 800);
+
+    return () => {
+      clearTimeout(nameTimer);
+      clearTimeout(typingTimer);
+    };
   }, []);
 
   const scrollToContact = () => {
     const contactElement = document.getElementById('contact');
     if (contactElement) {
       contactElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleDownloadCV = async () => {
+    setIsDownloading(true);
+    try {
+      await downloadCV();
+    } catch (error) {
+      console.error('Error downloading CV:', error);
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -64,16 +91,24 @@ export function Hero() {
               Computer Engineering Student
             </div>
             
-            {/* Animated name typing effect - moderate font size */}
+            {/* Enhanced name animation with smooth professional effects */}
             <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-              <div className="text-white mb-3 text-xl lg:text-2xl font-medium">Hello, I'm</div>
-              <div className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent min-h-[1.2em]">
+              <div className={`text-white mb-3 text-xl lg:text-2xl font-medium transition-all duration-1000 ease-out ${
+                isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
+                Hello, I'm
+              </div>
+              <div className={`bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent min-h-[1.2em] transition-all duration-1000 ease-out ${
+                isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
                 {displayText}
                 <span className={`${isTypingComplete ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}>|</span>
               </div>
             </h1>
             
-            <div className="space-y-4">
+            <div className={`space-y-4 transition-all duration-1000 ease-out delay-500 ${
+              isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
               <p className="text-xl text-white/80 max-w-lg leading-relaxed">
                 Passionate about AI & Machine Learning, with expertise in Python development 
                 and a growing focus on creating innovative solutions for real-world problems.
@@ -82,13 +117,15 @@ export function Hero() {
               <div className="flex items-center space-x-4 text-white/70 text-base">
                 <div className="flex items-center space-x-2">
                   <MapPin size={18} className="text-purple-400" />
-                  <span>Ambernath, Maharashtra, India</span>
+                  <span>{config.location}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <div className={`flex flex-wrap gap-4 transition-all duration-1000 ease-out delay-700 ${
+            isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
             <button 
               onClick={scrollToContact}
               className="bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-3 rounded-full 
@@ -98,29 +135,50 @@ export function Hero() {
               <Mail size={20} />
               <span>Hire Me</span>
             </button>
-            <button className="bg-purple-600/20 backdrop-blur-sm px-8 py-3 rounded-full text-base font-medium 
-                             border border-purple-500/30 hover:bg-purple-600/30 transition-all duration-300 
-                             flex items-center space-x-2 group">
-              <Download size={20} />
-              <span>Download CV</span>
+            <button 
+              onClick={handleDownloadCV}
+              disabled={isDownloading}
+              className="bg-purple-600/20 backdrop-blur-sm px-8 py-3 rounded-full text-base font-medium 
+                       border border-purple-500/30 hover:bg-purple-600/30 transition-all duration-300 
+                       flex items-center space-x-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isDownloading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-purple-300/30 border-t-purple-300 rounded-full animate-spin"></div>
+                  <span>Downloading...</span>
+                </>
+              ) : (
+                <>
+                  <Download size={20} />
+                  <span>Download CV</span>
+                </>
+              )}
             </button>
           </div>
 
-          <div className="flex space-x-4">
-            <a href="https://github.com/shriyadwivedi29" 
+          <div className={`flex space-x-4 transition-all duration-1000 ease-out delay-900 ${
+            isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
+            <a href={socialLinks.github} 
                className="p-3 bg-purple-600/20 backdrop-blur-sm rounded-full border border-purple-500/30 
-                        hover:bg-purple-600/30 transition-all duration-300 group">
+                        hover:bg-purple-600/30 transition-all duration-300 group"
+               target="_blank"
+               rel="noopener noreferrer"
+            >
               <Github size={20} className="group-hover:text-purple-300 transition-colors" />
             </a>
-            <a href="https://linkedin.com/in/shriya-dwivedi" 
+            <a href={socialLinks.linkedin} 
                className="p-3 bg-purple-600/20 backdrop-blur-sm rounded-full border border-purple-500/30 
-                        hover:bg-purple-600/30 transition-all duration-300 group">
+                        hover:bg-purple-600/30 transition-all duration-300 group"
+               target="_blank"
+               rel="noopener noreferrer"
+            >
               <Linkedin size={20} className="group-hover:text-purple-300 transition-colors" />
             </a>
           </div>
         </div>
 
-        {/* Profile section with technological elements */}
+        {/* Profile section with actual photo */}
         <div className="relative">
           <div className="relative w-full max-w-md mx-auto">
             {/* Tech-inspired decorative elements */}
@@ -143,14 +201,30 @@ export function Hero() {
               </svg>
             </div>
             
-            {/* Main profile area */}
-            <div className="relative bg-black/30 backdrop-blur-xl rounded-3xl p-6 border border-purple-500/20 
-                          shadow-2xl shadow-purple-500/10">
+            {/* Main profile area with actual photo */}
+            <div className={`relative bg-black/30 backdrop-blur-xl rounded-3xl p-6 border border-purple-500/20 
+                          shadow-2xl shadow-purple-500/10 transition-all duration-1000 ease-out delay-300 ${
+                            isNameVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+                          }`}>
               <div className="w-full h-72 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-cyan-600/20 
                             rounded-2xl flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(168,85,247,0.1)_50%,transparent_75%)] 
                               bg-[length:20px_20px] animate-pulse"></div>
-                <div className="text-8xl relative z-10">👩‍💻</div>
+                
+                {/* Profile Photo */}
+                <div className="relative z-10 w-48 h-48 rounded-full overflow-hidden border-4 border-purple-500/30 shadow-2xl shadow-purple-500/20">
+                  <img 
+                    src="/profile-photo.jpg" 
+                    alt="Shriya Dwivedi"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to emoji if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.parentElement!.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-6xl">👩‍💻</div>';
+                    }}
+                  />
+                </div>
               </div>
               <div className="mt-4 text-center">
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
@@ -164,7 +238,9 @@ export function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce transition-all duration-1000 ease-out delay-1100 ${
+        isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`}>
         <div className="w-6 h-10 border-2 border-purple-400/50 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-purple-400/70 rounded-full mt-2 animate-pulse"></div>
         </div>

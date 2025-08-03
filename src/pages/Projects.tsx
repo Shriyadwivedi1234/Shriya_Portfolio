@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navigation } from '../components/Navigation';
 import { ExternalLink, Github, Brain, Globe, Mic, Eye, Award } from 'lucide-react';
 
 export function Projects() {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -75,7 +80,7 @@ export function Projects() {
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
               My <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Projects</span>
             </h1>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8 leading-relaxed">
               A showcase of my technical journey through machine learning, AI, and web development projects 
               that solve real-world problems and contribute to meaningful research.
             </p>
@@ -86,7 +91,7 @@ export function Projects() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`px-6 py-3 rounded-full transition-all duration-300 ${
+                  className={`px-6 py-3 rounded-full transition-all duration-300 text-base ${
                     selectedCategory === category.id
                       ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/25'
                       : 'bg-purple-600/20 backdrop-blur-sm border border-purple-500/30 text-white/70 hover:text-white hover:bg-purple-600/30'
@@ -119,11 +124,11 @@ export function Projects() {
                             <IconComponent size={24} className="text-white" />
                           </div>
                           <div>
-                            <span className="px-3 py-1 bg-purple-600/20 rounded-full text-xs font-medium text-purple-300 border border-purple-500/30">
+                            <span className="px-3 py-1 bg-purple-600/20 rounded-full text-sm font-medium text-purple-300 border border-purple-500/30">
                               {project.category}
                             </span>
                             {project.badge && (
-                              <span className="ml-2 px-3 py-1 bg-green-600/20 rounded-full text-xs font-medium text-green-300 border border-green-500/30">
+                              <span className="ml-2 px-3 py-1 bg-green-600/20 rounded-full text-sm font-medium text-green-300 border border-green-500/30">
                                 {project.badge}
                               </span>
                             )}
@@ -139,17 +144,17 @@ export function Projects() {
                         {project.title}
                       </h3>
                       
-                      <p className="text-white/70 leading-relaxed">
+                      <p className="text-white/70 leading-relaxed text-base">
                         {project.description}
                       </p>
                     </div>
 
                     {/* Tech Stack */}
                     <div className="p-6">
-                      <h4 className="font-medium mb-3 text-white/90">Technologies Used</h4>
+                      <h4 className="font-medium mb-3 text-white/90 text-base">Technologies Used</h4>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.tech.map((tech, index) => (
-                          <span key={index} className="px-3 py-1 bg-purple-600/10 rounded-full text-sm text-white/80 
+                          <span key={index} className="px-3 py-1 bg-purple-600/10 rounded-full text-base text-white/80 
                                                      border border-purple-500/20">
                             {tech}
                           </span>
@@ -157,18 +162,18 @@ export function Projects() {
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-purple-300 font-medium">
+                        <span className="text-base text-purple-300 font-medium">
                           Status: {project.status}
                         </span>
                         
                         <div className="flex space-x-3">
-                          <button className="flex items-center space-x-2 text-sm text-purple-400 
+                          <button className="flex items-center space-x-2 text-base text-purple-400 
                                            hover:text-purple-300 transition-colors duration-300 group">
                             <ExternalLink size={16} />
                             <span>View Project</span>
                           </button>
                           {project.type !== 'research' && (
-                            <button className="flex items-center space-x-2 text-sm text-white/70 
+                            <button className="flex items-center space-x-2 text-base text-white/70 
                                              hover:text-white transition-colors duration-300 group">
                               <Github size={16} />
                               <span>Code</span>
@@ -196,7 +201,7 @@ export function Projects() {
               </p>
               <button className="bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-3 rounded-full 
                                font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 
-                               flex items-center space-x-2 mx-auto">
+                               flex items-center space-x-2 mx-auto text-base">
                 <ExternalLink size={20} />
                 <span>View Research Paper</span>
               </button>
@@ -207,14 +212,14 @@ export function Projects() {
           <div className="text-center">
             <div className="bg-black/30 backdrop-blur-xl rounded-3xl p-8 border border-purple-500/20">
               <h3 className="text-2xl font-semibold mb-4">Interested in Collaboration?</h3>
-              <p className="text-white/70 mb-6 max-w-2xl mx-auto">
+              <p className="text-white/70 mb-6 max-w-2xl mx-auto text-base">
                 I'm always looking for opportunities to work on innovative projects, 
                 especially in AI, machine learning, and healthcare technology.
               </p>
               <a 
                 href="mailto:shriyadwivedi29@gmail.com"
                 className="inline-block bg-white text-[#0a0a0f] px-8 py-3 rounded-full font-medium 
-                         hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/20"
+                         hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/20 text-base"
               >
                 Let's Discuss Your Project
               </a>

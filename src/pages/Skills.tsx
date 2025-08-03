@@ -1,7 +1,13 @@
 import { Navigation } from '../components/Navigation';
 import { Code, Database, Brain, Award, CheckCircle, ExternalLink, Star, Zap } from 'lucide-react';
+import { useEffect } from 'react';
 
 export function Skills() {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const skillCategories = [
     {
       title: "Programming Languages",
@@ -138,7 +144,7 @@ export function Skills() {
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
               Skills & <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Expertise</span>
             </h1>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
               A comprehensive overview of my technical skills, certifications, and expertise 
               developed through academic projects and continuous learning.
             </p>
@@ -159,7 +165,7 @@ export function Skills() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-semibold text-white mb-2">{category.title}</h3>
-                      <p className="text-white/60 text-sm leading-relaxed">{category.description}</p>
+                      <p className="text-white/60 text-base leading-relaxed">{category.description}</p>
                     </div>
                   </div>
 
@@ -170,11 +176,11 @@ export function Skills() {
                         <div className="bg-purple-600/10 rounded-xl p-4 border border-purple-500/20 
                                       hover:bg-purple-600/20 transition-all duration-300 h-full">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-white font-medium text-sm">{skill.name}</span>
+                            <span className="text-white font-medium text-base">{skill.name}</span>
                           </div>
                           
                           <div className="flex items-center justify-end">
-                            <span className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium
+                            <span className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-sm font-medium
                                            ${getSkillLevelColor(skill.level)} shadow-sm`}>
                               {getSkillLevelIcon(skill.level)}
                               <span>{skill.level}</span>
@@ -200,7 +206,7 @@ export function Skills() {
                 {softSkills.map((skill, index) => (
                   <div key={index} className="group">
                     <span className="inline-flex items-center px-6 py-3 bg-purple-600/20 rounded-full 
-                                   border border-purple-500/30 text-white font-medium
+                                   border border-purple-500/30 text-white font-medium text-base
                                    hover:bg-purple-600/30 hover:border-purple-400/50 transition-all duration-300
                                    shadow-lg shadow-purple-500/10 group-hover:shadow-purple-500/20">
                       <CheckCircle size={16} className="mr-2 text-purple-400" />
@@ -223,7 +229,7 @@ export function Skills() {
                     <CheckCircle size={20} className="text-white" />
                   </div>
                   <h4 className="font-semibold text-white mb-1">Beginner</h4>
-                  <p className="text-white/60 text-sm">Basic understanding</p>
+                  <p className="text-white/60 text-base">Basic understanding</p>
                 </div>
                 <div className="text-center">
                   <div className="bg-gradient-to-r from-green-500 to-emerald-500 w-12 h-12 rounded-xl 
@@ -231,7 +237,7 @@ export function Skills() {
                     <CheckCircle size={20} className="text-white" />
                   </div>
                   <h4 className="font-semibold text-white mb-1">Intermediate</h4>
-                  <p className="text-white/60 text-sm">Working knowledge</p>
+                  <p className="text-white/60 text-base">Working knowledge</p>
                 </div>
                 <div className="text-center">
                   <div className="bg-gradient-to-r from-blue-500 to-cyan-500 w-12 h-12 rounded-xl 
@@ -239,7 +245,7 @@ export function Skills() {
                     <Star size={20} className="text-white" />
                   </div>
                   <h4 className="font-semibold text-white mb-1">Advanced</h4>
-                  <p className="text-white/60 text-sm">Strong proficiency</p>
+                  <p className="text-white/60 text-base">Strong proficiency</p>
                 </div>
                 <div className="text-center">
                   <div className="bg-gradient-to-r from-purple-500 to-pink-500 w-12 h-12 rounded-xl 
@@ -247,7 +253,7 @@ export function Skills() {
                     <Zap size={20} className="text-white" />
                   </div>
                   <h4 className="font-semibold text-white mb-1">Expert</h4>
-                  <p className="text-white/60 text-sm">Mastery level</p>
+                  <p className="text-white/60 text-base">Mastery level</p>
                 </div>
               </div>
             </div>
@@ -266,11 +272,11 @@ export function Skills() {
                                           hover:bg-black/40 hover:border-purple-400/30 transition-all duration-300 group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
-                      <h4 className="font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors leading-tight">
+                      <h4 className="font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors leading-tight text-base">
                         {cert.title}
                       </h4>
-                      <p className="text-purple-300 font-medium text-sm mb-1">{cert.issuer}</p>
-                      <p className="text-white/60 text-sm">{cert.date}</p>
+                      <p className="text-purple-300 font-medium text-base mb-1">{cert.issuer}</p>
+                      <p className="text-white/60 text-base">{cert.date}</p>
                     </div>
                     <div className="flex items-center space-x-2">
                       <CheckCircle size={18} className="text-green-400" />
@@ -299,7 +305,7 @@ export function Skills() {
                 <Award className="mr-3 text-purple-400" size={24} />
                 <h4 className="font-semibold text-white text-lg">Semi-Finalist - Innovation Marathon 2023–24</h4>
               </div>
-              <p className="text-white/80">
+              <p className="text-white/80 text-base">
                 Recognized for innovative project ideas and technical excellence in a competitive innovation challenge.
               </p>
               <p className="text-purple-300 font-medium mt-2">March 2024</p>
@@ -320,15 +326,15 @@ export function Skills() {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <span className="px-6 py-3 bg-purple-600/20 rounded-full border border-purple-500/30 
-                               text-white/90 backdrop-blur-sm">
+                               text-white/90 backdrop-blur-sm text-base">
                   Always Learning
                 </span>
                 <span className="px-6 py-3 bg-purple-600/20 rounded-full border border-purple-500/30 
-                               text-white/90 backdrop-blur-sm">
+                               text-white/90 backdrop-blur-sm text-base">
                   Research-Oriented
                 </span>
                 <span className="px-6 py-3 bg-purple-600/20 rounded-full border border-purple-500/30 
-                               text-white/90 backdrop-blur-sm">
+                               text-white/90 backdrop-blur-sm text-base">
                   Innovation-Focused
                 </span>
               </div>

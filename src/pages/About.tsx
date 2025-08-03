@@ -1,7 +1,13 @@
 import { Navigation } from '../components/Navigation';
 import { GraduationCap, Award, Target, Heart, MapPin, Calendar } from 'lucide-react';
+import { useEffect } from 'react';
 
 export function About() {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const education = [
     {
       degree: "B.E. in Computer Engineering",
@@ -44,7 +50,7 @@ export function About() {
             <h1 className="text-3xl lg:text-5xl font-bold mb-4">
               About <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Me</span>
             </h1>
-            <p className="text-lg text-white/70 max-w-3xl mx-auto">
+            <p className="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
               A passionate Computer Engineering student specializing in AI & ML, with a strong foundation 
               in web development and data analytics.
             </p>
@@ -58,7 +64,7 @@ export function About() {
                   <Heart className="mr-3 text-purple-400" size={24} />
                   Who I Am
                 </h2>
-                <div className="space-y-3 text-white/80 leading-relaxed text-sm">
+                <div className="space-y-3 text-white/80 leading-relaxed text-base">
                   <p>
                     I'm Shriya Parmanand Dwivedi, a final-year Computer Engineering student at 
                     Lokmanya Tilak College of Engineering, Navi Mumbai. My journey in technology 
@@ -77,7 +83,7 @@ export function About() {
                   </p>
                 </div>
                 
-                <div className="mt-4 flex items-center space-x-3 text-purple-300 text-sm">
+                <div className="mt-4 flex items-center space-x-3 text-purple-300 text-base">
                   <MapPin size={16} />
                   <span>Based in Ambernath, Maharashtra, India</span>
                 </div>
@@ -92,7 +98,7 @@ export function About() {
                   <Target className="mr-3 text-purple-400" size={18} />
                   Current Focus
                 </h3>
-                <ul className="space-y-2 text-white/80 text-sm">
+                <ul className="space-y-2 text-white/80 text-base">
                   <li>• Completing B.E. in Computer Engineering (Final Year)</li>
                   <li>• Deepening expertise in Machine Learning & AI</li>
                   <li>• Building innovative projects with real-world applications</li>
@@ -108,7 +114,7 @@ export function About() {
                 </h3>
                 <ul className="space-y-2">
                   {achievements.map((achievement, index) => (
-                    <li key={index} className="text-white/80 flex items-start text-sm">
+                    <li key={index} className="text-white/80 flex items-start text-base">
                       <span className="text-purple-400 mr-2">•</span>
                       {achievement}
                     </li>
@@ -133,16 +139,16 @@ export function About() {
                     <div className="grid md:grid-cols-3 gap-4 items-center">
                       <div>
                         <h3 className="text-lg font-semibold text-white mb-1">{edu.degree}</h3>
-                        <p className="text-purple-300 text-sm">{edu.institution}</p>
+                        <p className="text-purple-300 text-base">{edu.institution}</p>
                       </div>
                       <div className="space-y-1">
-                        <div className="flex items-center text-white/70 text-sm">
+                        <div className="flex items-center text-white/70 text-base">
                           <Calendar size={14} className="mr-2 text-purple-400" />
                           {edu.period}
                         </div>
-                        <div className="text-white/80 font-medium text-sm">{edu.grade}</div>
+                        <div className="text-white/80 font-medium text-base">{edu.grade}</div>
                       </div>
-                      <div className="text-white/70 text-sm">{edu.focus}</div>
+                      <div className="text-white/70 text-base">{edu.focus}</div>
                     </div>
                   </div>
                   
