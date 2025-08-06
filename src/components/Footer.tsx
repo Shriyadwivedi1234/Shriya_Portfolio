@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className="relative py-12 px-6 border-t border-purple-500/20 bg-black/20 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-none mx-auto px-4 lg:pl-24 lg:pr-8 xl:pl-28 xl:pr-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div className="space-y-4">
@@ -72,7 +72,7 @@ export function Footer() {
             <span>by Shriya Dwivedi</span>
           </div>
 
-          <div className="flex items-center space-x-6 text-sm text-white/70">
+                      <div className="flex items-center space-x-6 text-base text-white/70">
             <span className="hover:text-white transition-colors cursor-pointer">Privacy</span>
             <span className="hover:text-white transition-colors cursor-pointer">Terms</span>
           </div>

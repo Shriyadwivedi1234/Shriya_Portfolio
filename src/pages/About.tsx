@@ -44,13 +44,13 @@ export function About() {
       <Navigation />
       
       <main className="pt-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full max-w-none mx-auto px-4 lg:pl-24 lg:pr-8 xl:pl-28 xl:pr-12">
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-3xl lg:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">About Me</span>
             </h1>
-            <p className="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg lg:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
               A passionate computer engineering student evolving into a UI/UX designer, 
             combining technical expertise with creative vision to craft exceptional digital experiences.
             </p>
@@ -64,7 +64,7 @@ export function About() {
               <Heart className="mr-3 text-purple-400" size={25} />
               Who I Am
               </h2>
-              <div className="space-y-3 text-white/80 leading-relaxed text-[1.0625rem]">
+              <div className="space-y-3 text-white/80 leading-relaxed text-base lg:text-lg">
               <p>
               I'm Shriya Parmanand Dwivedi, a final-year Computer Engineering student at 
               Lokmanya Tilak College of Engineering, Navi Mumbai. My journey in technology 
@@ -83,7 +83,7 @@ export function About() {
               </p>
               </div>
               
-              <div className="mt-4 flex items-center space-x-3 text-purple-300 text-[1.0625rem]">
+              <div className="mt-4 flex items-center space-x-3 text-purple-300 text-base lg:text-lg">
               <MapPin size={17} />
               <span>Based in Ambernath, Maharashtra, India</span>
               </div>
@@ -98,7 +98,7 @@ export function About() {
               <Target className="mr-3 text-purple-400" size={19} />
               Current Focus
               </h3>
-              <ul className="space-y-2 text-white/80 text-[1.0625rem]">
+              <ul className="space-y-2 text-white/80 text-base lg:text-lg">
               <li>• Completing B.E. in Computer Engineering (Final Year)</li>
               <li>• Deepening expertise in Machine Learning & AI</li>
               <li>• Building innovative projects with real-world applications</li>
@@ -114,7 +114,7 @@ export function About() {
               </h3>
               <ul className="space-y-2">
               {achievements.map((achievement, index) => (
-              <li key={index} className="text-white/80 flex items-start text-[1.0625rem]">
+              <li key={index} className="text-white/80 flex items-start text-base lg:text-lg">
                 <span className="text-purple-400 mr-2">•</span>
                 {achievement}
               </li>
@@ -125,37 +125,31 @@ export function About() {
             </div>
 
             {/* Education Section */}
-            <div className="mb-24">
-              <h2 className="text-xl md:text-2xl font-semibold text-center mb-12 flex items-center justify-center text-white">
+            <div className="mb-16">
+              <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-8 flex items-center justify-center text-white">
                 <GraduationCap className="mr-3 text-purple-400" size={28} />
                 Educational Journey
               </h2>
               
-              <div className="space-y-10">
+              <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
               {education.map((edu, index) => (
               <div key={index} className="relative">
-              <div className="bg-black/30 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-purple-500/20 hover:bg-black/40 transition-all duration-300">
-              <div className="grid md:grid-cols-3 gap-8 items-center">
+              <div className="bg-black/30 backdrop-blur-xl rounded-2xl p-6 border border-purple-500/20 hover:bg-black/40 transition-all duration-300 h-full">
+              <div className="space-y-4">
               <div>
-              <h3 className="text-base md:text-lg font-semibold text-white mb-2">{edu.degree}</h3>
-              <p className="text-purple-300 text-sm md:text-base">{edu.institution}</p>
+              <h3 className="text-lg font-semibold text-white mb-2">{edu.degree}</h3>
+              <p className="text-purple-300 text-base">{edu.institution}</p>
               </div>
               <div className="space-y-2">
-              <div className="flex items-center text-white/70 text-sm md:text-base">
-              <Calendar size={16} className="mr-2 text-purple-400" />
+              <div className="flex items-center text-white/70 text-base">
+              <Calendar size={18} className="mr-2 text-purple-400" />
               {edu.period}
               </div>
-              <div className="text-white/80 font-medium text-sm md:text-base">{edu.grade}</div>
+              <div className="text-white/80 font-medium text-base">{edu.grade}</div>
               </div>
-              <div className="text-white/70 text-sm md:text-base">{edu.focus}</div>
+              <div className="text-white/70 text-base">{edu.focus}</div>
               </div>
               </div>
-              
-              {index < education.length - 1 && (
-              <div className="flex justify-center my-7">
-              <div className="w-0.5 h-10 bg-gradient-to-b from-purple-400 to-blue-400"></div>
-              </div>
-              )}
               </div>
               ))}
               </div>

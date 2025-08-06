@@ -1,4 +1,4 @@
-import { Code, Palette, Database, Brain, Smartphone, Monitor } from 'lucide-react';
+import { Code, Palette, Database, Brain, Smartphone, Monitor, ExternalLink } from 'lucide-react';
 
 export function Skills() {
   const skillCategories = [
@@ -72,7 +72,7 @@ export function Skills() {
 
   return (
     <section id="skills" className="py-20 px-6 relative">
-      <div className="max-w-7xl mx-auto">
+              <div className="w-full max-w-none mx-auto px-4 lg:pl-24 lg:pr-8 xl:pl-28 xl:pr-12">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Skills & <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Expertise</span>
@@ -147,10 +147,21 @@ export function Skills() {
             Currently pursuing additional certifications in UX design and staying updated with the latest 
             design trends and development technologies.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-4 py-2 bg-white/20 rounded-full text-sm">Google UX Design Certificate (In Progress)</span>
-            <span className="px-4 py-2 bg-white/20 rounded-full text-sm">Interaction Design Foundation</span>
-            <span className="px-4 py-2 bg-white/20 rounded-full text-sm">Design Thinking Workshops</span>
+          <div className="flex flex-wrap justify-center gap-4 mb-6">
+            <span className="px-4 py-2 bg-white/20 rounded-full text-base">Google UX Design Certificate (In Progress)</span>
+            <span className="px-4 py-2 bg-white/20 rounded-full text-base">Interaction Design Foundation</span>
+            <span className="px-4 py-2 bg-white/20 rounded-full text-base">Design Thinking Workshops</span>
+          </div>
+          <div className="flex justify-center">
+            <button 
+              onClick={() => window.open(`https://drive.google.com/file/d/1YwCcvfRHqKV5lccwxjf4EhrvxZpOp1T5/view?usp=sharing`, '_blank')}
+              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 
+                       text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 
+                       transition-all duration-300 font-medium"
+            >
+              <ExternalLink size={16} />
+              <span>View Certificates</span>
+            </button>
           </div>
         </div>
       </div>

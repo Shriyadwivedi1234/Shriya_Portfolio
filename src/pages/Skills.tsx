@@ -138,7 +138,7 @@ export function Skills() {
       <Navigation />
       
       <main className="pt-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full max-w-none mx-auto px-4 lg:pl-24 lg:pr-8 xl:pl-28 xl:pr-12">
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
@@ -180,7 +180,7 @@ export function Skills() {
                           </div>
                           
                           <div className="flex items-center justify-end">
-                            <span className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-sm font-medium
+                            <span className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-base font-medium
                                            ${getSkillLevelColor(skill.level)} shadow-sm`}>
                               {getSkillLevelIcon(skill.level)}
                               <span>{skill.level}</span>
@@ -288,10 +288,14 @@ export function Skills() {
                   
                   <div className="flex items-center justify-between pt-3 border-t border-purple-500/20">
                     <span className="text-xs text-white/50">ID: {cert.certificateId}</span>
-                    <button className="flex items-center space-x-1 text-sm text-purple-400 
-                                     hover:text-purple-300 transition-colors">
-                      <ExternalLink size={12} />
-                      <span>Verify</span>
+                    <button 
+                      onClick={() => window.open(`https://drive.google.com/file/d/1YwCcvfRHqKV5lccwxjf4EhrvxZpOp1T5/view?usp=sharing`, '_blank')}
+                      className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 
+                               text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 
+                               transition-all duration-300 text-sm font-medium"
+                    >
+                      <ExternalLink size={14} />
+                      <span>View Certificate</span>
                     </button>
                   </div>
                 </div>
@@ -301,9 +305,20 @@ export function Skills() {
             {/* Special Achievement */}
             <div className="mt-8 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-2xl p-6 
                           border border-purple-500/20 backdrop-blur-xl">
-              <div className="flex items-center mb-4">
-                <Award className="mr-3 text-purple-400" size={24} />
-                <h4 className="font-semibold text-white text-lg">Semi-Finalist - Innovation Marathon 2023–24</h4>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <Award className="mr-3 text-purple-400" size={24} />
+                  <h4 className="font-semibold text-white text-lg">Semi-Finalist - Innovation Marathon 2023–24</h4>
+                </div>
+                <button 
+                  onClick={() => window.open(`https://drive.google.com/file/d/1YwCcvfRHqKV5lccwxjf4EhrvxZpOp1T5/view?usp=sharing`, '_blank')}
+                  className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 
+                           text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 
+                           transition-all duration-300 text-sm font-medium"
+                >
+                  <ExternalLink size={14} />
+                  <span>View Certificate</span>
+                </button>
               </div>
               <p className="text-white/80 text-base">
                 Recognized for innovative project ideas and technical excellence in a competitive innovation challenge.
@@ -312,34 +327,35 @@ export function Skills() {
             </div>
           </div>
 
-          {/* Learning Philosophy */}
-          <div className="text-center">
+            {/* Learning Philosophy */}
+            <div className="text-center">
             <div className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-3xl p-12 
-                          border border-purple-500/20 backdrop-blur-xl">
+                    border border-purple-500/20 backdrop-blur-xl">
               <Brain className="mx-auto mb-6 text-purple-400" size={48} />
               <h2 className="text-3xl font-semibold mb-6">Continuous Learning</h2>
               <p className="text-xl text-white/80 max-w-4xl mx-auto leading-relaxed mb-8">
-                Technology evolves rapidly, and I believe in staying ahead of the curve through 
-                continuous learning and hands-on practice. I regularly explore new frameworks, 
-                participate in online courses, and contribute to open-source projects to expand 
-                my knowledge and skills.
+              Technology evolves rapidly, and I believe in staying ahead of the curve through 
+              continuous learning and hands-on practice. I regularly explore new frameworks, 
+              participate in online courses, and contribute to open-source projects to expand 
+              my knowledge and skills.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <span className="px-6 py-3 bg-purple-600/20 rounded-full border border-purple-500/30 
-                               text-white/90 backdrop-blur-sm text-base">
-                  Always Learning
-                </span>
-                <span className="px-6 py-3 bg-purple-600/20 rounded-full border border-purple-500/30 
-                               text-white/90 backdrop-blur-sm text-base">
-                  Research-Oriented
-                </span>
-                <span className="px-6 py-3 bg-purple-600/20 rounded-full border border-purple-500/30 
-                               text-white/90 backdrop-blur-sm text-base">
-                  Innovation-Focused
-                </span>
+              <span className="px-6 py-3 bg-purple-600/20 rounded-full border border-purple-500/30 
+                       text-white/90 backdrop-blur-sm text-base">
+                Always Learning
+              </span>
+              <span className="px-6 py-3 bg-purple-600/20 rounded-full border border-purple-500/30 
+                       text-white/90 backdrop-blur-sm text-base">
+                Research-Oriented
+              </span>
+              <span className="px-6 py-3 bg-purple-600/20 rounded-full border border-purple-500/30 
+                       text-white/90 backdrop-blur-sm text-base">
+                Innovation-Focused
+              </span>
               </div>
             </div>
-          </div>
+            </div>
+            <div className="mb-20" />
         </div>
       </main>
     </div>

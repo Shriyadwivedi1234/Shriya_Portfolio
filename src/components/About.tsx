@@ -28,7 +28,7 @@ export function About() {
 
   return (
     <section id="about" className="py-20 px-6 relative">
-      <div className="max-w-7xl mx-auto">
+              <div className="w-full max-w-none mx-auto px-4 lg:pl-24 lg:pr-8 xl:pl-28 xl:pr-12">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             About <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Me</span>

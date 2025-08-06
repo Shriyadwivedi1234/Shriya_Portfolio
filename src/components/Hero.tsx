@@ -5,39 +5,35 @@ import { downloadCV, socialLinks, config } from '../utils/api';
 export function Hero() {
   const [displayText, setDisplayText] = useState('');
   const [isNameVisible, setIsNameVisible] = useState(false);
-  const fullName = 'SHRIYA DWIVEDI';
+  const fullName = 'SHRIYA PARMANAND DWIVEDI';
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
-    let nameTimer: ReturnType<typeof setTimeout>;
-    let typingTimer: ReturnType<typeof setTimeout>;
-    let typingInterval: ReturnType<typeof setTimeout>;
-
-    // Fade in "Hello, I'm" and background first
-    nameTimer = setTimeout(() => {
+    // Start name animation after a brief delay
+    const nameTimer = setTimeout(() => {
       setIsNameVisible(true);
-    }, 200);
+    }, 300);
 
-    // Start typing animation after fade-in
-    typingTimer = setTimeout(() => {
+    // Start typing animation after name appears
+    const typingTimer = setTimeout(() => {
       let index = 0;
-      const typeNext = () => {
-        setDisplayText(fullName.slice(0, index));
-        if (index < fullName.length) {
+      const timer = setInterval(() => {
+        if (index <= fullName.length) {
+          setDisplayText(fullName.slice(0, index));
           index++;
-          typingInterval = setTimeout(typeNext, 60 + Math.random() * 40); // randomize for natural effect
         } else {
           setIsTypingComplete(true);
+          clearInterval(timer);
         }
-      };
-      typeNext();
-    }, 700);
+      }, 100);
+
+      return () => clearInterval(timer);
+    }, 800);
 
     return () => {
       clearTimeout(nameTimer);
       clearTimeout(typingTimer);
-      clearTimeout(typingInterval);
     };
   }, []);
 
@@ -87,11 +83,11 @@ export function Hero() {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+      <div className="w-full max-w-none mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10 px-4 lg:pl-24 lg:pr-8 xl:pl-28 xl:pr-12">
         <div className="space-y-8">
           <div className="space-y-6">
             <div className="inline-block px-4 py-2 bg-purple-600/20 backdrop-blur-sm rounded-full 
-                          border border-purple-500/30 text-sm text-purple-300">
+                          border border-purple-500/30 text-base text-purple-300">
               Computer Engineering Student
             </div>
             
@@ -113,12 +109,12 @@ export function Hero() {
             <div className={`space-y-4 transition-all duration-1000 ease-out delay-500 ${
               isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}>
-              <p className="text-xl text-white/80 max-w-lg leading-relaxed">
+              <p className="text-lg lg:text-xl text-white/80 max-w-lg leading-relaxed">
                 Passionate about UI & UX design, with expertise in Python development 
                 and a growing focus on creating innovative solutions for real-world problems.
               </p>
               
-              <div className="flex items-center space-x-4 text-white/70 text-base">
+              <div className="flex items-center space-x-4 text-white/70 text-base lg:text-lg">
                 <div className="flex items-center space-x-2">
                   <MapPin size={18} className="text-purple-400" />
                   <span>{config.location}</span>
