@@ -201,8 +201,8 @@ export const sendEmail = (to: string, subject: string, body: string): void => {
 
 // Social media links
 export const socialLinks = {
-  github: 'https://github.com/shriyadwivedi29',
-  linkedin: 'https://linkedin.com/in/shriya-dwivedi',
+  github: 'https://github.com/Shriyadwivedi1234',
+  linkedin: 'https://www.linkedin.com/in/shriya-dwivedi-b81084298/',
   email: 'mailto:shriyadwivedi29@gmail.com',
   phone: 'tel:+918010245399'
 };
@@ -213,6 +213,6 @@ export const config = {
   siteDescription: 'Computer Engineering Student specializing in AI & Machine Learning',
   contactEmail: 'shriyadwivedi29@gmail.com',
   location: 'Ambernath, Maharashtra, India',
-  githubUsername: 'shriyadwivedi29',
-  linkedinUsername: 'shriya-dwivedi'
+  githubUsername: 'Shriyadwivedi1234',
+  linkedinUsername: 'shriya-dwivedi-b81084298'
 }; 

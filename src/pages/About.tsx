@@ -51,8 +51,8 @@ export function About() {
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">About Me</span>
             </h1>
             <p className="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
-              A passionate Computer Engineering student specializing in AI & ML, with a strong foundation 
-              in web development and data analytics.
+              A passionate computer engineering student evolving into a UI/UX designer, 
+            combining technical expertise with creative vision to craft exceptional digital experiences.
             </p>
           </div>
 
@@ -178,5 +178,6 @@ export function About() {
         </div>
       </main>
     </div>
+    
   );
 }

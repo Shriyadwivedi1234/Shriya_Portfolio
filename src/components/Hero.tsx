@@ -5,35 +5,39 @@ import { downloadCV, socialLinks, config } from '../utils/api';
 export function Hero() {
   const [displayText, setDisplayText] = useState('');
   const [isNameVisible, setIsNameVisible] = useState(false);
-  const fullName = 'SHRIYA PARMANAND DWIVEDI';
+  const fullName = 'SHRIYA DWIVEDI';
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
-    // Start name animation after a brief delay
-    const nameTimer = setTimeout(() => {
-      setIsNameVisible(true);
-    }, 300);
+    let nameTimer: ReturnType<typeof setTimeout>;
+    let typingTimer: ReturnType<typeof setTimeout>;
+    let typingInterval: ReturnType<typeof setTimeout>;
 
-    // Start typing animation after name appears
-    const typingTimer = setTimeout(() => {
+    // Fade in "Hello, I'm" and background first
+    nameTimer = setTimeout(() => {
+      setIsNameVisible(true);
+    }, 200);
+
+    // Start typing animation after fade-in
+    typingTimer = setTimeout(() => {
       let index = 0;
-      const timer = setInterval(() => {
-        if (index <= fullName.length) {
-          setDisplayText(fullName.slice(0, index));
+      const typeNext = () => {
+        setDisplayText(fullName.slice(0, index));
+        if (index < fullName.length) {
           index++;
+          typingInterval = setTimeout(typeNext, 60 + Math.random() * 40); // randomize for natural effect
         } else {
           setIsTypingComplete(true);
-          clearInterval(timer);
         }
-      }, 100);
-
-      return () => clearInterval(timer);
-    }, 800);
+      };
+      typeNext();
+    }, 700);
 
     return () => {
       clearTimeout(nameTimer);
       clearTimeout(typingTimer);
+      clearTimeout(typingInterval);
     };
   }, []);
 
@@ -110,7 +114,7 @@ export function Hero() {
               isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}>
               <p className="text-xl text-white/80 max-w-lg leading-relaxed">
-                Passionate about AI & Machine Learning, with expertise in Python development 
+                Passionate about UI & UX design, with expertise in Python development 
                 and a growing focus on creating innovative solutions for real-world problems.
               </p>
               
@@ -135,8 +139,9 @@ export function Hero() {
               <Mail size={20} />
               <span>Hire Me</span>
             </button>
+
             <button 
-              onClick={handleDownloadCV}
+              onClick={() => window.open('https://drive.google.com/file/d/1YwCcvfRHqKV5lccwxjf4EhrvxZpOp1T5/view?usp=sharing', '_blank')}
               disabled={isDownloading}
               className="bg-purple-600/20 backdrop-blur-sm px-8 py-3 rounded-full text-base font-medium 
                        border border-purple-500/30 hover:bg-purple-600/30 transition-all duration-300 
@@ -150,7 +155,7 @@ export function Hero() {
               ) : (
                 <>
                   <Download size={20} />
-                  <span>Download CV</span>
+                  <span>Resume</span>
                 </>
               )}
             </button>
@@ -206,29 +211,26 @@ export function Hero() {
                           shadow-2xl shadow-purple-500/10 transition-all duration-1000 ease-out delay-300 ${
                             isNameVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
                           }`}>
-              <div className="w-full h-72 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-cyan-600/20 
-                            rounded-2xl flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(168,85,247,0.1)_50%,transparent_75%)] 
-                              bg-[length:20px_20px] animate-pulse"></div>
+              <div className="relative flex items-center justify-center">
                 
                 {/* Profile Photo */}
-                <div className="relative z-10 w-48 h-48 rounded-full overflow-hidden border-4 border-purple-500/30 shadow-2xl shadow-purple-500/20">
+                <div className="relative z-10 w-64 h-64 rounded-full overflow-hidden border-4 border-purple-500/30 shadow-2xl shadow-purple-500/20">
                   <img 
-                    src="/profile-photo.jpg" 
-                    alt="Shriya Dwivedi"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback to emoji if image fails to load
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      target.parentElement!.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-6xl">👩‍💻</div>';
-                    }}
+                  src="/profile-photo.jpg" 
+                  alt="Shriya Dwivedi"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // Fallback to emoji if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.parentElement!.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-8xl">👩‍💻</div>';
+                  }}
                   />
                 </div>
               </div>
               <div className="mt-4 text-center">
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  Shriya Dwivedi
+                  Shriya Parmanand Dwivedi
                 </h3>
                 <p className="text-white/70 mt-2 text-base">Computer Engineering Student</p>
               </div>
