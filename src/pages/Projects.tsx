@@ -19,6 +19,8 @@ export function Projects() {
       type: "ml",
       featured: true,
       status: "Completed"
+      github: "",
+      link: ""
     },
     {
       id: 2,
@@ -31,6 +33,8 @@ export function Projects() {
       featured: true,
       status: "Published Research",
       badge: "Published"
+      github: "",
+      link: ""
     },
     {
       id: 3,
@@ -42,6 +46,8 @@ export function Projects() {
       type: "ai",
       featured: false,
       status: "Completed"
+      github: "",
+      link: ""
     },
     {
       id: 4,
@@ -53,6 +59,8 @@ export function Projects() {
       type: "web",
       featured: true,
       status: "Completed"
+      github: "",
+      link: ""
     },
     {
     id: 5,
@@ -64,7 +72,8 @@ export function Projects() {
     type: "web",
     featured: true,
     status: "Completed",
-    github: "https://github.com/Shriyadwivedi1234/Supply_Chain_Management"
+    github: "https://github.com/Shriyadwivedi1234/Supply_Chain_Management",
+    link: ""
   }
   ];
 
