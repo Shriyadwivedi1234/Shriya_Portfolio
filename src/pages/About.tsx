@@ -51,8 +51,7 @@ export function About() {
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">About Me</span>
             </h1>
             <p className="text-lg lg:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-              A passionate computer engineering student evolving into a UI/UX designer, 
-            combining technical expertise with creative vision to craft exceptional digital experiences.
+            A passionate Computer Engineering student with interests in Machine Learning, Artificial Intelligence, and Web Development, focused on building scalable applications and solving real-world problems through technology.
             </p>
           </div>
 
@@ -99,10 +98,10 @@ export function About() {
               Current Focus
               </h3>
               <ul className="space-y-2 text-white/80 text-base lg:text-lg">
-              <li>• Completing B.E. in Computer Engineering (Final Year)</li>
+              <li>• Pursuing B.E. in Computer Engineering (Final Year)</li>
               <li>• Deepening expertise in Machine Learning & AI</li>
               <li>• Building innovative projects with real-world applications</li>
-              <li>• Major interest in UI/UX</li>
+              <li>• Developing modern web applications using React and TypeScript</li>
               </ul>
               </div>
 
