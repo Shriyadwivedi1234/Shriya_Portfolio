@@ -54,6 +54,18 @@ export function Projects() {
       featured: true,
       status: "Completed"
     }
+    {
+    id: 5,
+    title: "Blockchain-based Supply Chain Management System",
+    category: "Blockchain & Web Development",
+    description: "Developed a blockchain-based supply chain management system that ensures transparency and traceability of products across the supply chain. The system uses smart contracts to securely record transactions and integrates MetaMask for blockchain authentication.",
+    tech: ["Solidity", "Smart Contracts", "Truffle", "MetaMask", "Selenium", "JavaScript", "Blockchain"],
+    icon: Globe,
+    type: "web",
+    featured: true,
+    status: "Completed",
+    github: "https://github.com/Shriyadwivedi1234/Supply_Chain_Management"
+  }
   ];
 
   const categories = [
@@ -167,18 +179,31 @@ export function Projects() {
                         </span>
                         
                         <div className="flex space-x-3">
-                          <button className="flex items-center space-x-2 text-base text-purple-400 
-                                           hover:text-purple-300 transition-colors duration-300 group">
+                        
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-2 text-base text-purple-400 
+                                       hover:text-purple-300 transition-colors duration-300 group"
+                          >
                             <ExternalLink size={16} />
                             <span>View Project</span>
-                          </button>
+                          </a>
+                        
                           {project.type !== 'research' && (
-                            <button className="flex items-center space-x-2 text-base text-white/70 
-                                             hover:text-white transition-colors duration-300 group">
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-2 text-base text-white/70 
+                                         hover:text-white transition-colors duration-300 group"
+                            >
                               <Github size={16} />
                               <span>Code</span>
-                            </button>
+                            </a>
                           )}
+                        
                         </div>
                       </div>
                     </div>
