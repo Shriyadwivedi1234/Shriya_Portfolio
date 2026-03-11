@@ -53,7 +53,7 @@ export function Projects() {
       type: "web",
       featured: true,
       status: "Completed"
-    }
+    },
     {
     id: 5,
     title: "Blockchain-based Supply Chain Management System",
