@@ -110,8 +110,7 @@ export function Hero() {
               isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}>
               <p className="text-lg lg:text-xl text-white/80 max-w-lg leading-relaxed">
-                Passionate about UI & UX design, with expertise in Python development 
-                and a growing focus on creating innovative solutions for real-world problems.
+               Machine learning and AI, Web development
               </p>
               
               <div className="flex items-center space-x-4 text-white/70 text-base lg:text-lg">
