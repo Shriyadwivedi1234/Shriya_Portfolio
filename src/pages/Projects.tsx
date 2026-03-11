@@ -18,7 +18,7 @@ export function Projects() {
       icon: Brain,
       type: "ml",
       featured: true,
-      status: "Completed"
+      status: "Completed",
       github: "",
       link: ""
     },
@@ -32,7 +32,7 @@ export function Projects() {
       type: "ml",
       featured: true,
       status: "Published Research",
-      badge: "Published"
+      badge: "Published",
       github: "",
       link: ""
     },
@@ -45,7 +45,7 @@ export function Projects() {
       icon: Mic,
       type: "ai",
       featured: false,
-      status: "Completed"
+      status: "Completed",
       github: "",
       link: ""
     },
@@ -58,7 +58,7 @@ export function Projects() {
       icon: Eye,
       type: "web",
       featured: true,
-      status: "Completed"
+      status: "Completed",
       github: "",
       link: ""
     },
